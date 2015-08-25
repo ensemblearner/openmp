@@ -1,6 +1,6 @@
 DIRECTIVE="gcc-4.9 -fopenmp -std=c11"
 OUTPUT=targets
-list="hello integral parallel_integral count_threads pi parallel_work vec_add"
+list="hello integral parallel_integral count_threads pi parallel_work vec_add race_cond"
 for code_name in $list
 do
     echo "compiling " $code_name

@@ -3,7 +3,7 @@
 #include <math.h>
 
 #define SIZE 2000000
-#define NUM_THREADS 6
+#define NUM_THREADS 2
 
 float fancy_comp(int num){
     int square = num*num;
@@ -20,7 +20,7 @@ int main(){
         //id = omp_get_thread_num();
 
         for (int i=0; i<SIZE;i++){
-            id = omp_get_thread_num();
+            int id = omp_get_thread_num();
             //printf("current thread :%d of %d threads\n", id, omp_get_num_threads());
             output[i] = fancy_comp(i);
         }

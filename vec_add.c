@@ -1,8 +1,8 @@
 #include <omp.h>
 #include <stdio.h>
 
-#define DIMENSIONS 200000
-#define NUM_THREADS 8
+#define DIMENSIONS 500000
+#define NUM_THREADS 4
 int main(){
     float a[DIMENSIONS], b[DIMENSIONS], c[DIMENSIONS];
     // fill the vectors
