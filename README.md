@@ -1,5 +1,6 @@
 # openmp
 OpenMP and stuff
+
 My rendevouz with openmp
 
 Create directory
