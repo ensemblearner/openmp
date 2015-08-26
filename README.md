@@ -1,6 +1,11 @@
 # openmp
 OpenMP and stuff
 My rendevouz with openmp
-mkdir targets
 
-./compile
+Create directory
+
+<code>mkdir targets</code>
+
+and then
+
+<code>./compile</code>
