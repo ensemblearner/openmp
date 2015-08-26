@@ -4,35 +4,25 @@
 
 #include <stdio.h>
 #include <omp.h>
-static long num_steps = 100000;
+static long num_steps = 10000000;
 
-#define NUM_THREADS 2
+#define NUM_THREADS 8
 int main(){
     double step;
-    int  i, nthreads;
-    double pi, sum[NUM_THREADS];
+    double pi, sum, x;
     step = 1.0/(double) num_steps;
     omp_set_num_threads(NUM_THREADS);
     double start = omp_get_wtime();
-    #pragma omp parallel
-
-    {
-        int i, id, nthrds;
-        double x;
-        id = omp_get_thread_num();
-        nthrds = omp_get_num_threads();
-        if (id==0) nthreads=nthrds;
-        for (i = id, sum[id]=0.0; i < num_steps; i=i+nthrds) {
+    #pragma omp parallel for private(x) reduction(+:sum)
+        for (int i = 0; i < num_steps; i++) {
             x = (i + 0.5) * step;
-            sum[id] += 4.0 / (1.0 + x * x);
+            sum += 4.0 / (1.0 + x * x);
         }
-    }
-    
+
+
     double end = omp_get_wtime();
-    for(i=0; i<nthreads; i++) {
-        pi+=(float)sum[i]*step;;
-    }
+    pi = step * sum;
     printf("pi is %f\n", pi);
-    printf("time elapsed: %f\n", end-start);
+    printf("time elapsed: %f for threads: %d\n", end-start, NUM_THREADS);
     return 0;
 };
