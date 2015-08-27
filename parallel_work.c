@@ -16,12 +16,8 @@ int main(){
     omp_set_num_threads(NUM_THREADS);
     double start = omp_get_wtime();
     #pragma omp parallel for
-    //{
-        //id = omp_get_thread_num();
-
         for (int i=0; i<SIZE;i++){
             int id = omp_get_thread_num();
-            //printf("current thread :%d of %d threads\n", id, omp_get_num_threads());
             output[i] = fancy_comp(i);
         }
     //}

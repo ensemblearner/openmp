@@ -16,12 +16,13 @@ int main(){
      }
 
      double start = omp_get_wtime();
-     #pragma omp parallel for
-     for (int i=0; i<DIMENSIONS; i++){
+     int i;
+     #pragma omp parallel for private(i)
+     for (i=0; i<DIMENSIONS; i++){
          a[i] = b[i] + c[i];
      }
      double end = omp_get_wtime();
-     printf("compute time:%f\n ", end-start);
+     printf("compute time: %f\n ", end-start);
      for (int i=0; i<DIMENSIONS; i++){
          if(a[i]!=3){
              printf("BUZZ\n");

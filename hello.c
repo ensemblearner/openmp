@@ -2,7 +2,6 @@
 // Created by Mohit Singh on 8/18/15.
 //
 
-#include "hello.h"
 #include <omp.h>
 #include <stdio.h>
 
