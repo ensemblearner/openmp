@@ -9,6 +9,7 @@ int foo(int i){
     return i*i;
 }
 int main() {
+    int i;
    #pragma omp parallel for
         for(int i=0; i<5;i++){
             int ID = omp_get_thread_num();
